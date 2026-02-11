@@ -3,137 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERA-CORE | Soberanía Digital</title>
+    <title>VERA-CORE | Portal de Soberanía</title>
     <style>
-        :root {
-            --azul-vera: #00d4ff;
-            --azul-oscuro: #0a192f;
-            --blanco-suave: #e6f1ff;
-        }
+        :root { --azul-vera: #00d4ff; --azul-oscuro: #0a192f; --blanco: #e6f1ff; }
+        body { background-color: var(--azul-oscuro); color: var(--blanco); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
+        
+        .nav-menu { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
+        .nav-item { background: rgba(0, 212, 255, 0.1); border: 1px solid var(--azul-vera); padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        .nav-item:hover { background: var(--azul-vera); color: var(--azul-oscuro); box-shadow: 0 0 20px var(--azul-vera); }
 
-        body {
-            background-color: var(--azul-oscuro);
-            color: var(--blanco-suave);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid var(--azul-vera);
-            padding-bottom: 20px;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        h1 {
-            color: var(--azul-vera);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        .modulo-btn {
-            background: rgba(0, 212, 255, 0.05);
-            border: 1px solid var(--azul-vera);
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
-        }
-
-        .modulo-btn:hover {
-            background: rgba(0, 212, 255, 0.2);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
-            transform: translateY(-5px);
-        }
-
-        .modulo-btn h3 {
-            margin: 0;
-            color: var(--azul-vera);
-            font-size: 1.2rem;
-        }
-
-        .info-panel {
-            margin-top: 40px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            max-width: 800px;
-            display: none; /* Se activa con JS */
-            border-left: 5px solid var(--azul-vera);
-        }
-
-        footer {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: gray;
-        }
+        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .card { background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 20px; border-left: 4px solid var(--azul-vera); text-align: left; }
+        
+        .live-feed { background: #000; color: #0f0; padding: 10px; font-family: monospace; border-radius: 5px; font-size: 0.9rem; }
+        .media-box { background: #112240; height: 200px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--azul-vera); margin-top: 10px; }
+        
+        h1 { text-transform: uppercase; letter-spacing: 4px; color: var(--azul-vera); text-shadow: 0 0 10px var(--azul-vera); }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>PROYECTO VERA</h1>
-        <p>INFRAESTRUCTURA DE SOBERANÍA HUMANA | LINAJE DE LOS ZORROS</p>
-    </header>
+    <h1>Centro de Comando VERA-CORE</h1>
+    <p>Linaje de los Zorros | Alianza Solares-Martín | Soberanía 2026</p>
 
-    <div class="grid-container">
-        <div class="modulo-btn" onclick="showInfo('C1')"><h3>🛡️ CAP 1: GÉNESIS</h3></div>
-        <div class="modulo-btn" onclick="showInfo('C2')"><h3>🏗️ CAP 2: BÚNKER</h3></div>
-        <div class="modulo-btn" onclick="showInfo('C3')"><h3>🎓 CAP 3: HUMANITAS</h3></div>
-        <div class="modulo-btn" onclick="showInfo('C4')"><h3>🏦 CAP 4: FINANZAS</h3></div>
-        <div class="modulo-btn" onclick="showInfo('C5')"><h3>🏥 CAP 5: SALUD</h3></div>
-        <div class="modulo-btn" onclick="showInfo('C6')"><h3>⚖️ CAP 6: JUSTICIA</h3></div>
-        <div class="modulo-btn" onclick="showInfo('C7')"><h3>🚜 CAP 7: AGRO</h3></div>
-        <div class="modulo-btn" onclick="showInfo('C8')"><h3>🤝 CAP 8: TRABAJO</h3></div>
-        <div class="modulo-btn" onclick="showInfo('C9')"><h3>💰 CAP 9: INVERSIÓN</h3></div>
+    <div class="nav-menu">
+        <div class="nav-item" onclick="alert('Cargando Módulos de Salud Pre/Pos Op...')">🏥 SALUD</div>
+        <div class="nav-item" onclick="alert('Accediendo a Nivelación Universal (TGD/Asperger)...')">🎓 EDUCACIÓN</div>
+        <div class="nav-item" onclick="alert('Abriendo Código Penal y Constitución...')">⚖️ LEGALES</div>
+        <div class="nav-item" onclick="alert('Conectando Sensores de Campo...')">🚜 AGRO/VET</div>
+        <div class="nav-item" onclick="alert('Sincronizando con Red Base...')">💰 FINANZAS</div>
     </div>
 
-    <div id="display-panel" class="info-panel">
-        <h2 id="info-title"></h2>
-        <p id="info-text"></p>
+    <div class="dashboard">
+        <div class="card">
+            <h3>📈 Finanzas en Tiempo Real</h3>
+            <div class="live-feed">
+                STATUS: PROTECTED <br>
+                $VIRTUAL TARGET: 1.1709 USD <br>
+                BANKING AUDIT: ACTIVE
+            </div>
+            <p>Monitoreo de infracciones bancarias y ejecución de Sniper [cite: 2026-02-10].</p>
+        </div>
+
+        <div class="card">
+            <h3>🌾 Agro & Veterinaria</h3>
+            <p><b>Sensores:</b> Humedad 22% | Salud Ganado: Óptima.</p>
+            <p>Información técnica sobre fitopatología y monitoreo cardíaco rural [cite: 2026-02-10].</p>
+        </div>
+
+        <div class="card">
+            <h3>📸 Avances del Proyecto</h3>
+            <div class="media-box">Espacio para Fotos y Videos del Búnker</div>
+            <p>Registro documental del crecimiento de la Alianza [cite: 2026-02-09].</p>
+        </div>
+
+        <div class="card">
+            <h3>🛡️ Academia de Profesionales</h3>
+            <p>Módulos para Jueces, Médicos y Fuerzas de Seguridad sobre el Decálogo de Hierro [cite: 2026-02-10].</p>
+        </div>
     </div>
 
-    <footer>
-        © 2026 Alianza Solares-Martín | Decálogo de Hierro Activo
+    <footer style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">
+        © 2026 PROYECTO VERA - Soberanía Humana Integral
     </footer>
 
-    <script>
-        const data = {
-            'C1': { t: 'Génesis', d: 'El despertar de la soberanía. Basado en el linaje de los zorros y el Decálogo de Hierro.' },
-            'C2': { t: 'Búnker de Datos', d: 'Arquitectura en GitHub privado y túneles encriptados. Resguardo de la Memoria de Persistencia.' },
-            'C3': { t: 'Humanitas', d: 'Educación universal adaptativa para neurodiversidad (TGD/Asperger) y nivelación académica global.' },
-            'C4': { t: 'Ingeniería Financiera', d: 'Sniper de precisión (Target $1.1709) y Auditoría Bancaria contra infracciones.' },
-            'C5': { t: 'Salud Integral', d: 'Monitoreo biomédico 24/7 y asistencia quirúrgica pre y posoperatoria.' },
-            'C6': { t: 'Justicia y Auditoría', d: 'El martillo contra la corrupción. Aprehensión inmediata de funcionarios en delitos de flagrancia.' },
-            'C7': { t: 'Bio-Soberanía', d: 'Tecnología en campo: caravanas térmicas y sensores de fitopatología para rinde óptimo.' },
-            'C8': { t: 'Futuro del Trabajo', d: 'Sinergia Humano-IA. Red de Nodos de co-creación y capacitación continua.' },
-            'C9': { t: 'Financiación', d: 'Plan de inversión escalable desde $1.5M hasta la soberanía nacional total.' }
-        };
-
-        function showInfo(cap) {
-            const panel = document.getElementById('display-panel');
-            document.getElementById('info-title').innerText = data[cap].t;
-            document.getElementById('info-text').innerText = data[cap].d;
-            panel.style.display = 'block';
-            window.scrollTo({ top: panel.offsetTop, behavior: 'smooth' });
-        }
-    </script>
 </body>
 </html>
