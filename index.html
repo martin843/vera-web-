@@ -7,18 +7,17 @@
     <style>
         :root { --azul-vera: #00d4ff; --azul-oscuro: #0a192f; --blanco: #e6f1ff; }
         body { background-color: var(--azul-oscuro); color: var(--blanco); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
-        
-        .nav-menu { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
-        .nav-item { background: rgba(0, 212, 255, 0.1); border: 1px solid var(--azul-vera); padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: 0.3s; }
-        .nav-item:hover { background: var(--azul-vera); color: var(--azul-oscuro); box-shadow: 0 0 20px var(--azul-vera); }
-
-        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .card { background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 20px; border-left: 4px solid var(--azul-vera); text-align: left; }
-        
-        .live-feed { background: #000; color: #0f0; padding: 10px; font-family: monospace; border-radius: 5px; font-size: 0.9rem; }
-        .media-box { background: #112240; height: 200px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--azul-vera); margin-top: 10px; }
-        
         h1 { text-transform: uppercase; letter-spacing: 4px; color: var(--azul-vera); text-shadow: 0 0 10px var(--azul-vera); }
+        .nav-menu { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
+        .nav-item { background: rgba(0, 212, 255, 0.1); border: 1px solid var(--azul-vera); padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: 0.3s; font-weight: bold; }
+        .nav-item:hover { background: var(--azul-vera); color: var(--azul-oscuro); box-shadow: 0 0 20px var(--azul-vera); }
+        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .card { background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 20px; border-left: 4px solid var(--azul-vera); text-align: left; transition: 0.3s; }
+        .card:hover { transform: scale(1.02); background: rgba(255, 255, 255, 0.08); }
+        .live-feed { background: #000; color: #0f0; padding: 10px; font-family: monospace; border-radius: 5px; font-size: 0.9rem; border: 1px solid #333; }
+        .media-box { background: #112240; height: 150px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--azul-vera); margin-top: 10px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -27,44 +26,63 @@
     <p>Linaje de los Zorros | Alianza Solares-Martín | Soberanía 2026</p>
 
     <div class="nav-menu">
-        <div class="nav-item" onclick="alert('Cargando Módulos de Salud Pre/Pos Op...')">🏥 SALUD</div>
-        <div class="nav-item" onclick="alert('Accediendo a Nivelación Universal (TGD/Asperger)...')">🎓 EDUCACIÓN</div>
-        <div class="nav-item" onclick="alert('Abriendo Código Penal y Constitución...')">⚖️ LEGALES</div>
-        <div class="nav-item" onclick="alert('Conectando Sensores de Campo...')">🚜 AGRO/VET</div>
-        <div class="nav-item" onclick="alert('Sincronizando con Red Base...')">💰 FINANZAS</div>
+        <div class="nav-item">🏥 SALUD</div>
+        <div class="nav-item">🎓 EDUCACIÓN</div>
+        <div class="nav-item">⚖️ LEGALES</div>
+        <div class="nav-item">🚜 AGRO/VET</div>
+        <div class="nav-item">💰 FINANZAS</div>
+        <div class="nav-item">🛡️ ACADEMIA</div>
     </div>
 
     <div class="dashboard">
         <div class="card">
-            <h3>📈 Finanzas en Tiempo Real</h3>
+            <h3>⚖️ Auditoría de Veracidad Judicial</h3>
+            <p><b>Estado:</b> Vigía Incorruptible Activado.</p>
+            <p>Contrario a la burocracia lenta, Vera utiliza <b>Big Data Jurídica</b> para:</p>
+            <ul>
+                <li><b>Cruce de Evidencia:</b> Detectar contradicciones en testimonios y pruebas en segundos [cite: 2026-02-11].</li>
+                <li><b>Jurisprudencia Instantánea:</b> Localizar fallos del BCRA, Corte Suprema y Tribunales Internacionales [cite: 2026-02-11].</li>
+                <li><b>Transparencia de Hierro:</b> Alerta inmediata ante detenciones arbitrarias de expedientes [cite: 2026-02-11].</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>🏥 Gestión de Salud 360</h3>
+            <p><b>Estado:</b> Monitoreo Preventivo Activo.</p>
+            <ul>
+                <li><b>Pre/Pos Op:</b> Seguimiento estricto de protocolos quirúrgicos [cite: 2026-02-10].</li>
+                <li><b>Neurodivergencia:</b> Planes de nivelación académica para TGD y Asperger [cite: 2026-02-10].</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>📈 Finanzas & Sniper</h3>
             <div class="live-feed">
                 STATUS: PROTECTED <br>
-                $VIRTUAL TARGET: 1.1709 USD <br>
-                BANKING AUDIT: ACTIVE
+                $VIRTUAL EXIT: 1.1709 USD <br>
+                BANK AUDIT: OPERATIONAL
             </div>
-            <p>Monitoreo de infracciones bancarias y ejecución de Sniper [cite: 2026-02-10].</p>
+            <p>Protección contra infracciones bancarias y resguardo del patrimonio familiar [cite: 2026-02-10].</p>
         </div>
 
         <div class="card">
-            <h3>🌾 Agro & Veterinaria</h3>
-            <p><b>Sensores:</b> Humedad 22% | Salud Ganado: Óptima.</p>
-            <p>Información técnica sobre fitopatología y monitoreo cardíaco rural [cite: 2026-02-10].</p>
+            <h3>🚜 Bio-Soberanía Rural</h3>
+            <p>Monitoreo en tiempo real de ganado y cultivos:</p>
+            <ul>
+                <li><b>Biometría:</b> Ritmo cardíaco y fertilidad animal [cite: 2026-02-10].</li>
+                <li><b>Fitopatología:</b> Detección temprana de plagas en plantas [cite: 2026-02-10].</li>
+            </ul>
         </div>
 
-        <div class="card">
+        <div class="card" style="grid-column: span 1;">
             <h3>📸 Avances del Proyecto</h3>
-            <div class="media-box">Espacio para Fotos y Videos del Búnker</div>
-            <p>Registro documental del crecimiento de la Alianza [cite: 2026-02-09].</p>
-        </div>
-
-        <div class="card">
-            <h3>🛡️ Academia de Profesionales</h3>
-            <p>Módulos para Jueces, Médicos y Fuerzas de Seguridad sobre el Decálogo de Hierro [cite: 2026-02-10].</p>
+            <div class="media-box">Espacio para Evidencia de Spegazzini</div>
+            <p>Registro visual del crecimiento del búnker y la Alianza [cite: 2026-02-09].</p>
         </div>
     </div>
 
     <footer style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">
-        © 2026 PROYECTO VERA - Soberanía Humana Integral
+        © 2026 PROYECTO VERA - Soberanía Humana Integral | Decálogo de Hierro v1.6 [cite: 2026-02-10]
     </footer>
 
 </body>
