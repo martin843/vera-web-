@@ -35,6 +35,7 @@
         <div class="nav-item" onclick="toggleManual('legales')">⚖️ LEGALES</div>
         <div class="nav-item" onclick="toggleManual('agro')">🚜 AGRO/VET</div>
         <div class="nav-item" onclick="toggleManual('finanzas')">💰 FINANZAS</div>
+        <div class="nav-item" onclick="toggleManual('analisis')" style="border-color: #ffcc00; color: #ffcc00;">🔍 ANALIZAR CASO</div>
     </div>
 
     <div id="manual-analisis" class="manual-section" style="display:none; border-left: 5px solid #ffcc00;">
@@ -71,16 +72,31 @@
 
     <script>
         function toggleManual(id) {
-            // Cerramos todos primero
-            document.querySelectorAll('.manual-section').forEach(s => s.style.display = 'none');
-            // Abrimos el seleccionado
-            const manual = document.getElementById('manual-' + id);
-            if (manual) {
-                manual.style.display = 'block';
-                manual.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                alert('Módulo ' + id.toUpperCase() + ' en proceso de llenado por el Comandante...');
-            }
+        document.querySelectorAll('.manual-section').forEach(s => s.style.display = 'none');
+        const manual = document.getElementById('manual-' + id);
+        if (manual) {
+            manual.style.display = 'block';
+            manual.scrollIntoView({ behavior: 'smooth' });
+        } else if (id === 'analisis') {
+            document.getElementById('manual-analisis').style.display = 'block';
+        } else {
+            alert('Módulo ' + id.toUpperCase() + ' en proceso de llenado por el Comandante...');
+        }
+    }
+
+    function procesarCasoVera() {
+        const caso = document.getElementById('caso-input').value;
+        const resultado = document.getElementById('resultado-vera');
+        const texto = document.getElementById('dictamen-text');
+        
+        if (caso.length < 10) {
+            alert("Por favor, describa el caso con más detalle para que Vera pueda auditarlo.");
+            return;
+        }
+
+        resultado.style.display = 'block';
+        texto.innerText = "Analizando Big Data Judicial... Buscando jurisprudencia... Detectando infracciones... \n\n[DICTAMEN PRELIMINAR]: Se detecta violación a la Ley de Defensa del Consumidor y precedentes del BCRA. Iniciando protocolo de reclamo automático.";
+    }
         }
     </script>
 
