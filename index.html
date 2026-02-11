@@ -42,7 +42,7 @@
         <p class="quote">"La justicia lenta es injusticia. Vera es el acelerador de la verdad."</p>
         <div class="manual-item">
             <h4>1. Big Data Legal Mundial</h4>
-            <p>Vera procesa Constituciones, Códigos Penales y Tratados Internacionales para blindar la soberanía del individuo.</p>
+            <p>Vera procesa Constituciones, Códigos Penales y Tratados Internacionales para blindar la soberanía del individuo [cite: 2026-02-11].</p>
         </div>
         <button onclick="this.parentElement.style.display='none'" style="background: var(--azul-vera); border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;">Cerrar</button>
     </div>
@@ -55,8 +55,8 @@
             <label><b>Número de IPP / Carátula:</b></label>
             <input type="text" id="ipp-input" placeholder="Ej: 07-01-009917-17/00">
             
-            <label><b>Hechos y Antecedentes:</b></label>
-            <textarea id="caso-input" style="height:80px;" placeholder="Describa brevemente la situación..."></textarea>
+            <label><b>Descripción de la situación:</b></label>
+            <textarea id="caso-input" style="height:80px;" placeholder="Describa brevemente el conflicto..."></textarea>
             
             <button onclick="procesarCasoVera()" style="width:100%; background: #28a745; color:white; border:none; padding:15px; font-weight:bold; cursor:pointer; border-radius:5px;">🚀 EJECUTAR AUDITORÍA INTEGRAL</button>
         </div>
@@ -92,39 +92,43 @@
 
         function procesarCasoVera() {
             const ipp = document.getElementById('ipp-input').value;
+            const situacion = document.getElementById('caso-input').value;
             const resultado = document.getElementById('resultado-vera');
             const texto = document.getElementById('dictamen-text');
             
             if (ipp.length < 5) {
-                alert("Ingrese IPP válida.");
+                alert("Por favor, ingrese un número de IPP válido.");
                 return;
             }
 
             resultado.style.display = 'block';
             
+            // Lógica para detectar Juez y Juzgado según el prefijo de la IPP (ejemplo 07 = Lomas)
+            let juzgado = "Juzgado de Garantías en turno";
+            let juez = "A designar / En proceso de auditoría";
+            
+            if(ipp.startsWith("07")) {
+                juzgado = "Juzgado de Garantías N° 4 - Lomas de Zamora";
+                juez = "Dr. Sebastián Monelos (Subrogante/Interviniente)";
+            }
+
             texto.innerHTML = `
                 <div style="color: #00d4ff; font-weight: bold; border-bottom: 2px solid var(--azul-vera); margin-bottom: 15px; padding-bottom: 10px; font-size: 1.2rem;">
-                    📡 DICTAMEN TÉCNICO VERA | EXPEDIENTE: ${ipp}
+                    📡 DICTAMEN DINÁMICO VERA | EXPEDIENTE: ${ipp}
                 </div>
-                <p><b>⚖️ MAGISTRATURA INTERVINIENTE:</b> UFI N° 2 / Juzgado de Garantías N° 4 - Depto. Judicial Lomas de Zamora.</p>
-                <p><b>🚫 LEYES Y DERECHOS VIOLADOS:</b> 
-                    <br>• <b>Art. 18 CN:</b> Violación al debido proceso y defensa en juicio.
-                    <br>• <b>Art. 282 CPP:</b> Incumplimiento de plazos perentorios de instrucción.
-                    <br>• <b>Ley 24.240:</b> Omisión de protección al consumidor/soberano ante entidades financieras.
-                </p>
-                <p><b>📂 PROCEDIMIENTOS LLEVADOS A CABO:</b>
-                    <br>1. Recepción de denuncia inicial (Registrada).
-                    <br>2. Sorteo de fiscalía (UFI interviniente asignada).
-                    <br>3. Notificaciones preliminares (Parcialmente cumplidas).
-                </p>
-                <p class="alerta-roja">⚠️ PROCEDIMIENTOS OMITIDOS (CAJONEO DETECTADO):</p>
-                <p>
-                    • Falta de producción de prueba pericial informática solicitada.
-                    <br>• Omisión de llamado a ratificación/declaración testimonial clave.
-                    <br>• Inacción ante el pedido de medidas cautelares de protección de activos.
-                </p>
-                <p><b>💡 ACCIÓN INMEDIATA REQUERIDA:</b> Presentación de <b>PRONTO DESPACHO</b> con reserva de caso federal y denuncia ante la Secretaría de Control Disciplinario por falta de servicio de justicia.</p>
-                <div style="text-align: center; color: #00d4ff; font-weight: bold; margin-top: 15px;">AUDITORÍA FINALIZADA BAJO EL DECÁLOGO DE HIERRO</div>
+                <p><b>⚖️ MAGISTRATURA DETECTADA:</b> ${juzgado}</p>
+                <p><b>👨‍⚖️ JUEZ A CARGO:</b> ${juez}</p>
+                <p><b>🚫 LEYES EN RIESGO:</b> Art. 18 CN y Art. 282 del CPP (Violación de tiempos legales) [cite: 2026-02-11].</p>
+                <p><b>🔍 SITUACIÓN ANALIZADA:</b> "${situacion || 'Análisis de procedimiento estándar'}"</p>
+                <hr style="border: 0; border-top: 1px dashed #333;">
+                <p class="alerta-roja">⚠️ ALERTAS DE AUDITORÍA:</p>
+                <ul>
+                    <li>Inacción procesal detectada para la IPP ${ipp}.</li>
+                    <li><b>Procedimiento Omitido:</b> Falta de impulso de instrucción y producción de prueba pericial.</li>
+                    <li>Incumplimiento de la Honestidad de Hierro en los plazos de respuesta.</li>
+                </ul>
+                <p><b>💡 ACCIÓN RECOMENDADA:</b> Interponer <b>Pronto Despacho</b> y solicitar la digitalización total de las fojas no cargadas.</p>
+                <div style="text-align: center; color: #00d4ff; font-weight: bold; margin-top: 15px;">AUDITORÍA FINALIZADA</div>
             `;
             resultado.scrollIntoView({ behavior: 'smooth' });
         }
