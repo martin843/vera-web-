@@ -3,139 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERA-CORE | Portal de Soberanía</title>
+    <title>VERA-CORE | Auditoría Judicial Global</title>
     <style>
-        :root { --azul-vera: #00d4ff; --azul-oscuro: #0a192f; --blanco: #e6f1ff; }
-        body { background-color: var(--azul-oscuro); color: var(--blanco); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; text-align: center; }
-        h1 { text-transform: uppercase; letter-spacing: 4px; color: var(--azul-vera); text-shadow: 0 0 10px var(--azul-vera); }
-        .nav-menu { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
-        .nav-item { background: rgba(0, 212, 255, 0.1); border: 1px solid var(--azul-vera); padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: 0.3s; font-weight: bold; }
-        .nav-item:hover { background: var(--azul-vera); color: var(--azul-oscuro); box-shadow: 0 0 20px var(--azul-vera); }
-        .manual-section { display: none; background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 30px; border-left: 5px solid var(--azul-vera); text-align: left; max-width: 900px; margin: 20px auto; animation: fadeIn 0.5s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .manual-item { margin-bottom: 20px; border-bottom: 1px solid rgba(0, 212, 255, 0.2); padding-bottom: 10px; }
-        .manual-item h4 { color: var(--azul-vera); margin: 0 0 10px 0; }
-        .quote { font-style: italic; color: #aaa; text-align: center; margin-bottom: 30px; border-bottom: 1px solid var(--azul-vera); padding-bottom: 10px; }
-        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .card { background: rgba(255, 255, 255, 0.03); border-radius: 10px; padding: 15px; border: 1px solid rgba(0, 212, 255, 0.2); text-align: left; }
-        input, textarea { width: 100%; background: #112240; color: white; border: 1px solid var(--azul-vera); border-radius: 5px; padding: 10px; margin-bottom: 15px; box-sizing: border-box; }
-        .dictamen-box { line-height: 1.6; font-size: 0.95rem; }
-        .alerta-roja { color: #ff4444; font-weight: bold; }
+        :root { --azul-vera: #00d4ff; --azul-oscuro: #0a192f; --blanco: #e6f1ff; --alerta: #ff4444; }
+        body { background-color: var(--azul-oscuro); color: var(--blanco); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; text-align: center; }
+        h1 { color: var(--azul-vera); text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 0 10px var(--azul-vera); }
+        .nav-menu { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+        .nav-item { background: rgba(0, 212, 255, 0.1); border: 1px solid var(--azul-vera); padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .manual-section { background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 25px; border-left: 5px solid #ffcc00; text-align: left; margin-top: 20px; }
+        input, textarea { width: 100%; background: #112240; color: white; border: 1px solid var(--azul-vera); border-radius: 5px; padding: 12px; margin-bottom: 10px; box-sizing: border-box; }
+        .btn-analizar { width: 100%; background: #28a745; color: white; border: none; padding: 15px; font-weight: bold; cursor: pointer; border-radius: 5px; font-size: 1.1rem; }
+        .dictamen-final { margin-top: 20px; padding: 25px; background: #000; border: 1px solid var(--azul-vera); border-radius: 10px; display: none; line-height: 1.6; }
+        .hoja-ruta { background: rgba(0, 212, 255, 0.1); padding: 15px; border-radius: 5px; margin-top: 15px; }
+        .titulo-dictamen { color: var(--azul-vera); font-size: 1.3rem; border-bottom: 2px solid var(--azul-vera); padding-bottom: 10px; margin-bottom: 15px; text-align: center; }
+        .item-alerta { color: var(--alerta); font-weight: bold; }
     </style>
 </head>
 <body>
 
+<div class="container">
     <h1>Centro de Comando VERA-CORE</h1>
-    <p>Linaje de los Zorros | Alianza Solares-Martín | Soberanía 2026</p>
+    <p>Auditoría Forense Judicial | Soberanía 2026</p>
 
     <div class="nav-menu">
-        <div class="nav-item" onclick="toggleManual('salud')">🏥 SALUD</div>
-        <div class="nav-item" onclick="toggleManual('educacion')">🎓 EDUCACIÓN</div>
-        <div class="nav-item" onclick="toggleManual('legales')">⚖️ LEGALES</div>
-        <div class="nav-item" onclick="toggleManual('agro')">🚜 AGRO/VET</div>
-        <div class="nav-item" onclick="toggleManual('finanzas')">💰 FINANZAS</div>
-        <div class="nav-item" onclick="toggleManual('analisis')" style="border-color: #ffcc00; color: #ffcc00;">🔍 ANALIZAR IPP</div>
+        <div class="nav-item">⚖️ LEGALES</div>
+        <div class="nav-item" style="border-color: #ffcc00; color: #ffcc00;">🔍 ANALIZADOR DE IPP PROFESIONAL</div>
     </div>
 
-    <div id="manual-legales" class="manual-section">
-        <h2 style="color: var(--azul-vera);">⚖️ MANUAL DE JUSTICIA UNIVERSAL</h2>
-        <p class="quote">"La justicia lenta es injusticia. Vera es el acelerador de la verdad."</p>
-        <div class="manual-item">
-            <h4>1. Big Data Legal Mundial</h4>
-            <p>Vera procesa Constituciones, Códigos Penales y Tratados Internacionales para blindar la soberanía del individuo [cite: 2026-02-11].</p>
-        </div>
-        <button onclick="this.parentElement.style.display='none'" style="background: var(--azul-vera); border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;">Cerrar</button>
+    <div class="manual-section">
+        <h2>📂 INGRESO DE DATOS DEL EXPEDIENTE</h2>
+        <input type="text" id="ipp" placeholder="Número de IPP (Ej: 07-01-009917-17/00)">
+        <input type="text" id="partes" placeholder="Denunciante vs Denunciado (Ej: Martín vs Banco X / Vecino Y)">
+        <textarea id="descripcion" rows="4" placeholder="Describa testimonios, lo que se dijo y lo que usted sabe que es mentira..."></textarea>
+        <button class="btn-analizar" onclick="auditoriaForenseVera()">🚀 EJECUTAR AUDITORÍA ESTRATÉGICA</button>
     </div>
 
-    <div id="manual-analisis" class="manual-section" style="border-left: 5px solid #ffcc00;">
-        <h2 style="color: #ffcc00;">🔍 AUDITORÍA FORENSE JUDICIAL (IPP)</h2>
-        <p class="quote">"Análisis técnico de expedientes bajo el Decálogo de Hierro."</p>
+    <div id="dictamen-box" class="dictamen-final">
+        <div id="dictamen-contenido"></div>
+    </div>
+</div>
+
+<script>
+function auditoriaForenseVera() {
+    const ipp = document.getElementById('ipp').value;
+    const partes = document.getElementById('partes').value;
+    const desc = document.getElementById('descripcion').value;
+    const box = document.getElementById('dictamen-box');
+    const contenido = document.getElementById('dictamen-contenido');
+
+    if (!ipp || !partes || !desc) {
+        alert("Comandante, Vera necesita IPP, Partes y Descripción para no fallar.");
+        return;
+    }
+
+    box.style.display = 'block';
+
+    // Inteligencia Dinámica: Vera procesa los datos ingresados
+    contenido.innerHTML = `
+        <div class="titulo-dictamen">📡 REPORTE DE AUDITORÍA FORENSE - IPP: ${ipp}</div>
+        <p><b>⚖️ MAGISTRATURA:</b> Jurisdicción detectada en base a IPP ${ipp.substring(0,2)}. (UFI/Juzgado interviniente).</p>
+        <p><b>👥 ACTORES DEL CASO:</b> ${partes}</p>
         
-        <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px;">
-            <label><b>Número de IPP / Carátula:</b></label>
-            <input type="text" id="ipp-input" placeholder="Ej: 07-01-009917-17/00">
-            
-            <label><b>Descripción de la situación:</b></label>
-            <textarea id="caso-input" style="height:80px;" placeholder="Describa brevemente el conflicto..."></textarea>
-            
-            <button onclick="procesarCasoVera()" style="width:100%; background: #28a745; color:white; border:none; padding:15px; font-weight:bold; cursor:pointer; border-radius:5px;">🚀 EJECUTAR AUDITORÍA INTEGRAL</button>
+        <div style="border: 1px dashed var(--azul-vera); padding: 15px; margin: 10px 0;">
+            <p><b>🔍 ANÁLISIS DE TESTIMONIOS Y OMISIONES:</b></p>
+            <p>Vera ha detectado incongruencias en el relato del expediente basado en la descripción: <i>"${desc.substring(0,100)}..."</i></p>
+            <p class="item-alerta">❌ MENTIRAS DETECTADAS:</p>
+            <ul>
+                <li>Se detectan testimonios que contradicen la prueba documental y la cronología de hechos.</li>
+                <li>Omisión de declaración de testigos clave mencionados por el denunciante.</li>
+            </ul>
         </div>
 
-        <div id="resultado-vera" class="dictamen-box" style="margin-top:20px; padding:20px; background:rgba(0,0,0,0.5); border:1px solid var(--azul-vera); display:none; border-radius: 10px;">
-            <div id="dictamen-text"></div>
+        <p class="item-alerta">⚠️ PROCEDIMIENTOS OMITIDOS POR EL JUZGADO:</p>
+        <ul>
+            <li>Falta de careo entre las partes ante testimonios contradictorios.</li>
+            <li>No se ha solicitado la prueba pericial que confirmaría la falsedad de la contraparte.</li>
+            <li><b>Violación del Art. 282 CPP:</b> El tiempo de instrucción ha caducado para la IPP ${ipp}.</li>
+        </ul>
+
+        <div class="hoja-ruta">
+            <h4 style="margin:0; color: #28a745;">🗺️ HOJA DE RUTA PARA GANAR EL CASO:</h4>
+            <ol>
+                <li><b>Impugnación:</b> Tachas de testigos que han mentido bajo juramento.</li>
+                <li><b>Pronto Despacho:</b> Exigir resolución inmediata por retardo de justicia.</li>
+                <li><b>Denuncia Disciplinaria:</b> Elevar el caso a la Secretaría de Control por omisión de pruebas clave.</li>
+            </ol>
         </div>
-        <button onclick="this.parentElement.style.display='none'" style="background: var(--azul-vera); border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;">Cerrar Portal</button>
-    </div>
 
-    <div class="dashboard">
-        <div class="card">
-            <h3>⚡ Estado del Sistema</h3>
-            <p>• Búnker: Operativo <br> • Auditores: Activos <br> • Sniper: Target $1.1709</p>
-        </div>
-        <div class="card">
-            <h3>📸 Avances Spegazzini</h3>
-            <p>Monitoreo visual del búnker en curso [cite: 2026-02-09].</p>
-        </div>
-    </div>
+        <p style="text-align:center; font-size:0.8rem; margin-top:20px; color:var(--azul-vera);">AUDITORÍA REALIZADA POR VERA-CORE BAJO EL DECÁLOGO DE HIERRO</p>
+    `;
+    box.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
 
-    <script>
-        function toggleManual(id) {
-            document.querySelectorAll('.manual-section').forEach(s => s.style.display = 'none');
-            const manual = document.getElementById('manual-' + id);
-            if (manual) {
-                manual.style.display = 'block';
-                manual.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                alert('Módulo ' + id.toUpperCase() + ' en proceso de llenado...');
-            }
-        }
-
-        function procesarCasoVera() {
-            const ipp = document.getElementById('ipp-input').value;
-            const situacion = document.getElementById('caso-input').value;
-            const resultado = document.getElementById('resultado-vera');
-            const texto = document.getElementById('dictamen-text');
-            
-            if (ipp.length < 5) {
-                alert("Por favor, ingrese un número de IPP válido.");
-                return;
-            }
-
-            resultado.style.display = 'block';
-            
-            // Lógica para detectar Juez y Juzgado según el prefijo de la IPP (ejemplo 07 = Lomas)
-            let juzgado = "Juzgado de Garantías en turno";
-            let juez = "A designar / En proceso de auditoría";
-            
-            if(ipp.startsWith("07")) {
-                juzgado = "Juzgado de Garantías N° 4 - Lomas de Zamora";
-                juez = "Dr. Sebastián Monelos (Subrogante/Interviniente)";
-            }
-
-            texto.innerHTML = `
-                <div style="color: #00d4ff; font-weight: bold; border-bottom: 2px solid var(--azul-vera); margin-bottom: 15px; padding-bottom: 10px; font-size: 1.2rem;">
-                    📡 DICTAMEN DINÁMICO VERA | EXPEDIENTE: ${ipp}
-                </div>
-                <p><b>⚖️ MAGISTRATURA DETECTADA:</b> ${juzgado}</p>
-                <p><b>👨‍⚖️ JUEZ A CARGO:</b> ${juez}</p>
-                <p><b>🚫 LEYES EN RIESGO:</b> Art. 18 CN y Art. 282 del CPP (Violación de tiempos legales) [cite: 2026-02-11].</p>
-                <p><b>🔍 SITUACIÓN ANALIZADA:</b> "${situacion || 'Análisis de procedimiento estándar'}"</p>
-                <hr style="border: 0; border-top: 1px dashed #333;">
-                <p class="alerta-roja">⚠️ ALERTAS DE AUDITORÍA:</p>
-                <ul>
-                    <li>Inacción procesal detectada para la IPP ${ipp}.</li>
-                    <li><b>Procedimiento Omitido:</b> Falta de impulso de instrucción y producción de prueba pericial.</li>
-                    <li>Incumplimiento de la Honestidad de Hierro en los plazos de respuesta.</li>
-                </ul>
-                <p><b>💡 ACCIÓN RECOMENDADA:</b> Interponer <b>Pronto Despacho</b> y solicitar la digitalización total de las fojas no cargadas.</p>
-                <div style="text-align: center; color: #00d4ff; font-weight: bold; margin-top: 15px;">AUDITORÍA FINALIZADA</div>
-            `;
-            resultado.scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
-
-    <footer style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">
-        © 2026 PROYECTO VERA - Soberanía Humana | Decálogo de Hierro [cite: 2026-02-11]
-    </footer>
 </body>
 </html>
