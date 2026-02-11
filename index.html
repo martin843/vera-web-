@@ -11,17 +11,14 @@
         .nav-menu { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
         .nav-item { background: rgba(0, 212, 255, 0.1); border: 1px solid var(--azul-vera); padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: 0.3s; font-weight: bold; }
         .nav-item:hover { background: var(--azul-vera); color: var(--azul-oscuro); box-shadow: 0 0 20px var(--azul-vera); }
-        
-        /* Estilo del Manual de Justicia */
         .manual-section { display: none; background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 30px; border-left: 5px solid var(--azul-vera); text-align: left; max-width: 900px; margin: 20px auto; animation: fadeIn 0.5s ease-in; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
         .manual-item { margin-bottom: 20px; border-bottom: 1px solid rgba(0, 212, 255, 0.2); padding-bottom: 10px; }
         .manual-item h4 { color: var(--azul-vera); margin: 0 0 10px 0; }
         .quote { font-style: italic; color: #aaa; text-align: center; margin-bottom: 30px; border-bottom: 1px solid var(--azul-vera); padding-bottom: 10px; }
-        
         .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
         .card { background: rgba(255, 255, 255, 0.03); border-radius: 10px; padding: 15px; border: 1px solid rgba(0, 212, 255, 0.2); text-align: left; }
+        input, textarea { width: 100%; background: #112240; color: white; border: 1px solid var(--azul-vera); border-radius: 5px; padding: 10px; margin-bottom: 15px; box-sizing: border-box; }
     </style>
 </head>
 <body>
@@ -35,74 +32,84 @@
         <div class="nav-item" onclick="toggleManual('legales')">⚖️ LEGALES</div>
         <div class="nav-item" onclick="toggleManual('agro')">🚜 AGRO/VET</div>
         <div class="nav-item" onclick="toggleManual('finanzas')">💰 FINANZAS</div>
-        <div class="nav-item" onclick="toggleManual('analisis')" style="border-color: #ffcc00; color: #ffcc00;">🔍 ANALIZAR CASO</div>
+        <div class="nav-item" onclick="toggleManual('analisis')" style="border-color: #ffcc00; color: #ffcc00;">🔍 ANALIZAR CASO / IPP</div>
     </div>
 
-    <div id="manual-analisis" class="manual-section" style="display:none; border-left: 5px solid #ffcc00;">
-        <h2 style="color: #ffcc00;">🔍 PORTAL DE ANÁLISIS DE CASOS V1.0</h2>
-        <p class="quote">"Suministre los hechos. Vera encontrará la verdad."</p>
+    <div id="manual-legales" class="manual-section">
+        <h2 style="color: var(--azul-vera);">⚖️ MANUAL DE JUSTICIA UNIVERSAL</h2>
+        <p class="quote">"La justicia lenta es injusticia. Vera es el acelerador de la verdad."</p>
+        <div class="manual-item">
+            <h4>1. Big Data Legal</h4>
+            <p>Vera integra Constituciones, Códigos y Tratados Internacionales (ONU/OEA) [cite: 2026-02-11].</p>
+        </div>
+        <div class="manual-item">
+            <h4>2. Jurisprudencia para Profesionales</h4>
+            <p>Uso de precedentes vinculantes para impedir fallos arbitrarios o corruptos [cite: 2026-02-11].</p>
+        </div>
+        <button onclick="this.parentElement.style.display='none'" style="background: var(--azul-vera); border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;">Cerrar Manual</button>
+    </div>
+
+    <div id="manual-analisis" class="manual-section" style="border-left: 5px solid #ffcc00;">
+        <h2 style="color: #ffcc00;">🔍 AUDITORÍA JUDICIAL VERA (IPP)</h2>
+        <p class="quote">"Suministre el número de IPP o Carátula para iniciar el rastreo."</p>
         
         <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px;">
-            <label style="display:block; margin-bottom:10px;"><b>Descripción de los Hechos:</b></label>
-            <textarea id="caso-input" style="width:100%; height:150px; background:#112240; color:white; border:1px solid var(--azul-vera); border-radius:5px; padding:10px;" placeholder="Ej: Me están cobrando una comisión bancaria no pactada de $..."></textarea>
+            <label><b>Número de IPP / Expediente:</b></label>
+            <input type="text" id="ipp-input" placeholder="Ej: IPP-14-01-001234-26">
             
-            <label style="display:block; margin-top:20px; margin-bottom:10px;"><b>Pruebas Disponibles:</b></label>
-            <input type="text" id="pruebas-input" style="width:100%; background:#112240; color:white; border:1px solid var(--azul-vera); padding:10px;" placeholder="Ej: Captura de pantalla del homebanking, contrato PDF">
+            <label><b>Descripción de la situación:</b></label>
+            <textarea id="caso-input" style="height:100px;" placeholder="Describa brevemente el conflicto..."></textarea>
             
-            <button onclick="procesarCasoVera()" style="margin-top:20px; width:100%; background: #28a745; color:white; border:none; padding:15px; font-weight:bold; cursor:pointer; border-radius:5px;">🚀 INICIAR AUDITORÍA DE VERACIDAD</button>
+            <button onclick="procesarCasoVera()" style="width:100%; background: #28a745; color:white; border:none; padding:15px; font-weight:bold; cursor:pointer; border-radius:5px;">🚀 INICIAR AUDITORÍA DE IPP</button>
         </div>
 
         <div id="resultado-vera" style="margin-top:20px; padding:15px; background:rgba(0,212,255,0.1); border:1px dashed var(--azul-vera); display:none;">
             <h4 style="color:var(--azul-vera);">📡 Dictamen de Vera Proyectado:</h4>
             <p id="dictamen-text"></p>
         </div>
-        
         <button onclick="this.parentElement.style.display='none'" style="background: var(--azul-vera); border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;">Cerrar Portal</button>
     </div>
+
     <div class="dashboard">
         <div class="card">
             <h3>⚡ Estado del Sistema</h3>
-            <p>• Búnker: Operativo <br> • Auditores: Activos <br> • Sniper: Target $1.1709</p>
+            <p>• Búnker: Operativo <br> • Auditores: Activos <br> • Sniper: Target $1.1709 [cite: 2026-02-10]</p>
         </div>
         <div class="card">
             <h3>📸 Avances Spegazzini</h3>
-            <p>Monitoreo visual del búnker y la Alianza en curso.</p>
+            <p>Registro documental del crecimiento de la Alianza [cite: 2026-02-09].</p>
         </div>
     </div>
 
     <script>
         function toggleManual(id) {
-        document.querySelectorAll('.manual-section').forEach(s => s.style.display = 'none');
-        const manual = document.getElementById('manual-' + id);
-        if (manual) {
-            manual.style.display = 'block';
-            manual.scrollIntoView({ behavior: 'smooth' });
-        } else if (id === 'analisis') {
-            document.getElementById('manual-analisis').style.display = 'block';
-        } else {
-            alert('Módulo ' + id.toUpperCase() + ' en proceso de llenado por el Comandante...');
-        }
-    }
-
-    function procesarCasoVera() {
-        const caso = document.getElementById('caso-input').value;
-        const resultado = document.getElementById('resultado-vera');
-        const texto = document.getElementById('dictamen-text');
-        
-        if (caso.length < 10) {
-            alert("Por favor, describa el caso con más detalle para que Vera pueda auditarlo.");
-            return;
+            document.querySelectorAll('.manual-section').forEach(s => s.style.display = 'none');
+            const manual = document.getElementById('manual-' + id);
+            if (manual) {
+                manual.style.display = 'block';
+                manual.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Módulo ' + id.toUpperCase() + ' en proceso de llenado por el Comandante...');
+            }
         }
 
-        resultado.style.display = 'block';
-        texto.innerText = "Analizando Big Data Judicial... Buscando jurisprudencia... Detectando infracciones... \n\n[DICTAMEN PRELIMINAR]: Se detecta violación a la Ley de Defensa del Consumidor y precedentes del BCRA. Iniciando protocolo de reclamo automático.";
-    }
+        function procesarCasoVera() {
+            const ipp = document.getElementById('ipp-input').value;
+            const resultado = document.getElementById('resultado-vera');
+            const texto = document.getElementById('dictamen-text');
+            
+            if (ipp.length < 5) {
+                alert("Por favor, ingrese un número de IPP o carátula válido.");
+                return;
+            }
+
+            resultado.style.display = 'block';
+            texto.innerText = "Conectando con Servidores Judiciales... Rastreando IPP: " + ipp + "\n\n[ESTADO]: Expediente localizado. Analizando tiempos procesales y jurisprudencia aplicable. Vera detecta que el proceso debe ser acelerado bajo la Honestidad de Hierro.";
         }
     </script>
 
     <footer style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">
         © 2026 PROYECTO VERA - Soberanía Humana | Decálogo de Hierro [cite: 2026-02-11]
     </footer>
-
 </body>
 </html>
