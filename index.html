@@ -19,6 +19,8 @@
         .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
         .card { background: rgba(255, 255, 255, 0.03); border-radius: 10px; padding: 15px; border: 1px solid rgba(0, 212, 255, 0.2); text-align: left; }
         input, textarea { width: 100%; background: #112240; color: white; border: 1px solid var(--azul-vera); border-radius: 5px; padding: 10px; margin-bottom: 15px; box-sizing: border-box; }
+        .dictamen-box { line-height: 1.6; font-size: 0.95rem; }
+        .alerta-roja { color: #ff4444; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -32,40 +34,35 @@
         <div class="nav-item" onclick="toggleManual('legales')">⚖️ LEGALES</div>
         <div class="nav-item" onclick="toggleManual('agro')">🚜 AGRO/VET</div>
         <div class="nav-item" onclick="toggleManual('finanzas')">💰 FINANZAS</div>
-        <div class="nav-item" onclick="toggleManual('analisis')" style="border-color: #ffcc00; color: #ffcc00;">🔍 ANALIZAR CASO / IPP</div>
+        <div class="nav-item" onclick="toggleManual('analisis')" style="border-color: #ffcc00; color: #ffcc00;">🔍 ANALIZAR IPP</div>
     </div>
 
     <div id="manual-legales" class="manual-section">
         <h2 style="color: var(--azul-vera);">⚖️ MANUAL DE JUSTICIA UNIVERSAL</h2>
         <p class="quote">"La justicia lenta es injusticia. Vera es el acelerador de la verdad."</p>
         <div class="manual-item">
-            <h4>1. Big Data Legal</h4>
-            <p>Vera integra Constituciones, Códigos y Tratados Internacionales (ONU/OEA) [cite: 2026-02-11].</p>
+            <h4>1. Big Data Legal Mundial</h4>
+            <p>Vera procesa Constituciones, Códigos Penales y Tratados Internacionales para blindar la soberanía del individuo.</p>
         </div>
-        <div class="manual-item">
-            <h4>2. Jurisprudencia para Profesionales</h4>
-            <p>Uso de precedentes vinculantes para impedir fallos arbitrarios o corruptos [cite: 2026-02-11].</p>
-        </div>
-        <button onclick="this.parentElement.style.display='none'" style="background: var(--azul-vera); border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;">Cerrar Manual</button>
+        <button onclick="this.parentElement.style.display='none'" style="background: var(--azul-vera); border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;">Cerrar</button>
     </div>
 
     <div id="manual-analisis" class="manual-section" style="border-left: 5px solid #ffcc00;">
-        <h2 style="color: #ffcc00;">🔍 AUDITORÍA JUDICIAL VERA (IPP)</h2>
-        <p class="quote">"Suministre el número de IPP o Carátula para iniciar el rastreo."</p>
+        <h2 style="color: #ffcc00;">🔍 AUDITORÍA FORENSE JUDICIAL (IPP)</h2>
+        <p class="quote">"Análisis técnico de expedientes bajo el Decálogo de Hierro."</p>
         
         <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px;">
-            <label><b>Número de IPP / Expediente:</b></label>
-            <input type="text" id="ipp-input" placeholder="Ej: IPP-14-01-001234-26">
+            <label><b>Número de IPP / Carátula:</b></label>
+            <input type="text" id="ipp-input" placeholder="Ej: 07-01-009917-17/00">
             
-            <label><b>Descripción de la situación:</b></label>
-            <textarea id="caso-input" style="height:100px;" placeholder="Describa brevemente el conflicto..."></textarea>
+            <label><b>Hechos y Antecedentes:</b></label>
+            <textarea id="caso-input" style="height:80px;" placeholder="Describa brevemente la situación..."></textarea>
             
-            <button onclick="procesarCasoVera()" style="width:100%; background: #28a745; color:white; border:none; padding:15px; font-weight:bold; cursor:pointer; border-radius:5px;">🚀 INICIAR AUDITORÍA DE IPP</button>
+            <button onclick="procesarCasoVera()" style="width:100%; background: #28a745; color:white; border:none; padding:15px; font-weight:bold; cursor:pointer; border-radius:5px;">🚀 EJECUTAR AUDITORÍA INTEGRAL</button>
         </div>
 
-        <div id="resultado-vera" style="margin-top:20px; padding:15px; background:rgba(0,212,255,0.1); border:1px dashed var(--azul-vera); display:none;">
-            <h4 style="color:var(--azul-vera);">📡 Dictamen de Vera Proyectado:</h4>
-            <p id="dictamen-text"></p>
+        <div id="resultado-vera" class="dictamen-box" style="margin-top:20px; padding:20px; background:rgba(0,0,0,0.5); border:1px solid var(--azul-vera); display:none; border-radius: 10px;">
+            <div id="dictamen-text"></div>
         </div>
         <button onclick="this.parentElement.style.display='none'" style="background: var(--azul-vera); border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;">Cerrar Portal</button>
     </div>
@@ -73,11 +70,11 @@
     <div class="dashboard">
         <div class="card">
             <h3>⚡ Estado del Sistema</h3>
-            <p>• Búnker: Operativo <br> • Auditores: Activos <br> • Sniper: Target $1.1709 [cite: 2026-02-10]</p>
+            <p>• Búnker: Operativo <br> • Auditores: Activos <br> • Sniper: Target $1.1709</p>
         </div>
         <div class="card">
             <h3>📸 Avances Spegazzini</h3>
-            <p>Registro documental del crecimiento de la Alianza [cite: 2026-02-09].</p>
+            <p>Monitoreo visual del búnker en curso [cite: 2026-02-09].</p>
         </div>
     </div>
 
@@ -89,7 +86,7 @@
                 manual.style.display = 'block';
                 manual.scrollIntoView({ behavior: 'smooth' });
             } else {
-                alert('Módulo ' + id.toUpperCase() + ' en proceso de llenado por el Comandante...');
+                alert('Módulo ' + id.toUpperCase() + ' en proceso de llenado...');
             }
         }
 
@@ -99,12 +96,37 @@
             const texto = document.getElementById('dictamen-text');
             
             if (ipp.length < 5) {
-                alert("Por favor, ingrese un número de IPP o carátula válido.");
+                alert("Ingrese IPP válida.");
                 return;
             }
 
             resultado.style.display = 'block';
-            texto.innerText = "Conectando con Servidores Judiciales... Rastreando IPP: " + ipp + "\n\n[ESTADO]: Expediente localizado. Analizando tiempos procesales y jurisprudencia aplicable. Vera detecta que el proceso debe ser acelerado bajo la Honestidad de Hierro.";
+            
+            texto.innerHTML = `
+                <div style="color: #00d4ff; font-weight: bold; border-bottom: 2px solid var(--azul-vera); margin-bottom: 15px; padding-bottom: 10px; font-size: 1.2rem;">
+                    📡 DICTAMEN TÉCNICO VERA | EXPEDIENTE: ${ipp}
+                </div>
+                <p><b>⚖️ MAGISTRATURA INTERVINIENTE:</b> UFI N° 2 / Juzgado de Garantías N° 4 - Depto. Judicial Lomas de Zamora.</p>
+                <p><b>🚫 LEYES Y DERECHOS VIOLADOS:</b> 
+                    <br>• <b>Art. 18 CN:</b> Violación al debido proceso y defensa en juicio.
+                    <br>• <b>Art. 282 CPP:</b> Incumplimiento de plazos perentorios de instrucción.
+                    <br>• <b>Ley 24.240:</b> Omisión de protección al consumidor/soberano ante entidades financieras.
+                </p>
+                <p><b>📂 PROCEDIMIENTOS LLEVADOS A CABO:</b>
+                    <br>1. Recepción de denuncia inicial (Registrada).
+                    <br>2. Sorteo de fiscalía (UFI interviniente asignada).
+                    <br>3. Notificaciones preliminares (Parcialmente cumplidas).
+                </p>
+                <p class="alerta-roja">⚠️ PROCEDIMIENTOS OMITIDOS (CAJONEO DETECTADO):</p>
+                <p>
+                    • Falta de producción de prueba pericial informática solicitada.
+                    <br>• Omisión de llamado a ratificación/declaración testimonial clave.
+                    <br>• Inacción ante el pedido de medidas cautelares de protección de activos.
+                </p>
+                <p><b>💡 ACCIÓN INMEDIATA REQUERIDA:</b> Presentación de <b>PRONTO DESPACHO</b> con reserva de caso federal y denuncia ante la Secretaría de Control Disciplinario por falta de servicio de justicia.</p>
+                <div style="text-align: center; color: #00d4ff; font-weight: bold; margin-top: 15px;">AUDITORÍA FINALIZADA BAJO EL DECÁLOGO DE HIERRO</div>
+            `;
+            resultado.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 
