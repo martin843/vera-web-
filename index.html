@@ -11,13 +11,17 @@
         .nav-menu { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
         .nav-item { background: rgba(0, 212, 255, 0.1); border: 1px solid var(--azul-vera); padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: 0.3s; font-weight: bold; }
         .nav-item:hover { background: var(--azul-vera); color: var(--azul-oscuro); box-shadow: 0 0 20px var(--azul-vera); }
+        
+        /* Estilo del Manual de Justicia */
+        .manual-section { display: none; background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 30px; border-left: 5px solid var(--azul-vera); text-align: left; max-width: 900px; margin: 20px auto; animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .manual-item { margin-bottom: 20px; border-bottom: 1px solid rgba(0, 212, 255, 0.2); padding-bottom: 10px; }
+        .manual-item h4 { color: var(--azul-vera); margin: 0 0 10px 0; }
+        .quote { font-style: italic; color: #aaa; text-align: center; margin-bottom: 30px; border-bottom: 1px solid var(--azul-vera); padding-bottom: 10px; }
+        
         .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .card { background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 20px; border-left: 4px solid var(--azul-vera); text-align: left; transition: 0.3s; }
-        .card:hover { transform: scale(1.02); background: rgba(255, 255, 255, 0.08); }
-        .live-feed { background: #000; color: #0f0; padding: 10px; font-family: monospace; border-radius: 5px; font-size: 0.9rem; border: 1px solid #333; }
-        .media-box { background: #112240; height: 150px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--azul-vera); margin-top: 10px; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; }
+        .card { background: rgba(255, 255, 255, 0.03); border-radius: 10px; padding: 15px; border: 1px solid rgba(0, 212, 255, 0.2); text-align: left; }
     </style>
 </head>
 <body>
@@ -26,63 +30,62 @@
     <p>Linaje de los Zorros | Alianza Solares-Martín | Soberanía 2026</p>
 
     <div class="nav-menu">
-        <div class="nav-item">🏥 SALUD</div>
-        <div class="nav-item">🎓 EDUCACIÓN</div>
-        <div class="nav-item">⚖️ LEGALES</div>
-        <div class="nav-item">🚜 AGRO/VET</div>
-        <div class="nav-item">💰 FINANZAS</div>
-        <div class="nav-item">🛡️ ACADEMIA</div>
+        <div class="nav-item" onclick="toggleManual('salud')">🏥 SALUD</div>
+        <div class="nav-item" onclick="toggleManual('educacion')">🎓 EDUCACIÓN</div>
+        <div class="nav-item" onclick="toggleManual('legales')">⚖️ LEGALES</div>
+        <div class="nav-item" onclick="toggleManual('agro')">🚜 AGRO/VET</div>
+        <div class="nav-item" onclick="toggleManual('finanzas')">💰 FINANZAS</div>
+    </div>
+
+    <div id="manual-legales" class="manual-section">
+        <h2 style="color: var(--azul-vera);">⚖️ MANUAL 1: JUSTICIA INCORRUPTIBLE</h2>
+        <p class="quote">"La justicia lenta es injusticia. Vera es el acelerador de la verdad."</p>
+        
+        <div class="manual-item">
+            <h4>1. Rastreo de Precedentes (Big Data)</h4>
+            <p>Vera no espera a que un abogado presente un fallo. El sistema escanea las bases de datos de la Corte Suprema, el BCRA y los Tribunales Internacionales para encontrar la jurisprudencia que protege al soberano en tiempo real.</p>
+        </div>
+
+        <div class="manual-item">
+            <h4>2. Detección de Falsedad</h4>
+            <p>Mediante el análisis de contradicciones en expedientes, Vera señala dónde se está violando la jurisprudencia establecida y detecta anomalías en testimonios en segundos.</p>
+        </div>
+
+        <div class="manual-item">
+            <h4>3. Alerta de Cajoneo</h4>
+            <p>Si un expediente no se mueve según los plazos legales establecidos por la ley, Vera emite una alerta automática de incumplimiento de deberes de funcionario público.</p>
+        </div>
+        <button onclick="this.parentElement.style.display='none'" style="background: var(--azul-vera); border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold;">Cerrar Manual</button>
     </div>
 
     <div class="dashboard">
         <div class="card">
-            <h3>⚖️ Auditoría de Veracidad Judicial</h3>
-            <p><b>Estado:</b> Vigía Incorruptible Activado.</p>
-            <p>Contrario a la burocracia lenta, Vera utiliza <b>Big Data Jurídica</b> para:</p>
-            <ul>
-                <li><b>Cruce de Evidencia:</b> Detectar contradicciones en testimonios y pruebas en segundos [cite: 2026-02-11].</li>
-                <li><b>Jurisprudencia Instantánea:</b> Localizar fallos del BCRA, Corte Suprema y Tribunales Internacionales [cite: 2026-02-11].</li>
-                <li><b>Transparencia de Hierro:</b> Alerta inmediata ante detenciones arbitrarias de expedientes [cite: 2026-02-11].</li>
-            </ul>
+            <h3>⚡ Estado del Sistema</h3>
+            <p>• Búnker: Operativo <br> • Auditores: Activos <br> • Sniper: Target $1.1709</p>
         </div>
-
         <div class="card">
-            <h3>🏥 Gestión de Salud 360</h3>
-            <p><b>Estado:</b> Monitoreo Preventivo Activo.</p>
-            <ul>
-                <li><b>Pre/Pos Op:</b> Seguimiento estricto de protocolos quirúrgicos [cite: 2026-02-10].</li>
-                <li><b>Neurodivergencia:</b> Planes de nivelación académica para TGD y Asperger [cite: 2026-02-10].</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>📈 Finanzas & Sniper</h3>
-            <div class="live-feed">
-                STATUS: PROTECTED <br>
-                $VIRTUAL EXIT: 1.1709 USD <br>
-                BANK AUDIT: OPERATIONAL
-            </div>
-            <p>Protección contra infracciones bancarias y resguardo del patrimonio familiar [cite: 2026-02-10].</p>
-        </div>
-
-        <div class="card">
-            <h3>🚜 Bio-Soberanía Rural</h3>
-            <p>Monitoreo en tiempo real de ganado y cultivos:</p>
-            <ul>
-                <li><b>Biometría:</b> Ritmo cardíaco y fertilidad animal [cite: 2026-02-10].</li>
-                <li><b>Fitopatología:</b> Detección temprana de plagas en plantas [cite: 2026-02-10].</li>
-            </ul>
-        </div>
-
-        <div class="card" style="grid-column: span 1;">
-            <h3>📸 Avances del Proyecto</h3>
-            <div class="media-box">Espacio para Evidencia de Spegazzini</div>
-            <p>Registro visual del crecimiento del búnker y la Alianza [cite: 2026-02-09].</p>
+            <h3>📸 Avances Spegazzini</h3>
+            <p>Monitoreo visual del búnker y la Alianza en curso.</p>
         </div>
     </div>
 
+    <script>
+        function toggleManual(id) {
+            // Cerramos todos primero
+            document.querySelectorAll('.manual-section').forEach(s => s.style.display = 'none');
+            // Abrimos el seleccionado
+            const manual = document.getElementById('manual-' + id);
+            if (manual) {
+                manual.style.display = 'block';
+                manual.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Módulo ' + id.toUpperCase() + ' en proceso de llenado por el Comandante...');
+            }
+        }
+    </script>
+
     <footer style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">
-        © 2026 PROYECTO VERA - Soberanía Humana Integral | Decálogo de Hierro v1.6 [cite: 2026-02-10]
+        © 2026 PROYECTO VERA - Soberanía Humana | Decálogo de Hierro [cite: 2026-02-11]
     </footer>
 
 </body>
